@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "fields": [
+    {
+      "name": "a1",
+      "type": "integer"
+    },
+    {
+      "name": "a2",
+      "type": "string"
+    },
+    {
+      "name": "a3",
+      "type": "integer"
+    },
+    {
+      "name": "a4",
+      "type": "string"
+    },
+    {
+      "name": "a5",
+      "type": "integer"
+    },
+    {
+      "name": "a6",
+      "type": "string"
+    },
+    {
+      "name": "a7",
+      "type": "integer"
+    },
+    {
+      "name": "a8",
+      "type": "string"
+    },
+    {
+      "name": "a9",
+      "type": "integer"
+    },
+    {
+      "name": "a10",
+      "type": "string"
+    },
+    {
+      "name": "a11",
+      "type": "integer"
+    },
+    {
+      "name": "a12",
+      "type": "string"
+    },
+    {
+      "name": "a13",
+      "type": "integer"
+    },
+    {
+      "name": "a14",
+      "type": "string"
+    },
+    {
+      "name": "a15",
+      "type": "integer"
+    },
+    {
+      "name": "a16",
+      "type": "string"
+    },
+    {
+      "name": "a17",
+      "type": "integer"
+    },
+    {
+      "name": "a18",
+      "type": "string"
+    },
+    {
+      "name": "a19",
+      "type": "integer"
+    },
+    {
+      "name": "a20",
+      "type": "string"
+    },
+    {
+      "name": "interest",
+      "type": "enum",
+      "enum": [
+        {
+          "value": "游戏",
+          "children": [
+            {
+              "value": "王者荣耀",
+              "children": []
+            },
+            {
+              "value": "和平精英"
+            },
+            {
+              "value": "阴阳师"
+            }
+          ]
+        },
+        {
+          "value": "音乐"
+        }
+      ]
+    }
+  ]
+}

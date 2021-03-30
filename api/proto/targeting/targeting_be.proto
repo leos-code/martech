@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package targeting;
+
+option go_package = "github.com/tencentad/martech/api/proto/targeting";
+option java_package = "com.tencent.ug.proto.targeting";
+
+enum LogicalOp {
+    UnKnown = 0;
+    Or = 1;
+    And = 2;
+}
+
+message Predicate {
+    message Value {
+        message Range {
+            uint64 begin = 1;
+            uint64 end = 2;
+        }
+        enum Type {
+            UnKnown = 0;
+            ID = 1;
+            RANGE = 2;
+            String = 3;
+        }
+        Type type = 1;
+        uint64 id = 2;
+        Range range = 3;
+        string string = 4;
+    }
+    bool not = 1;
+    repeated Value value = 2;
+    string field = 3;
+}
+
+// 布尔表达式
+message BETree {
+    bool not = 1;
+    LogicalOp op = 2;
+    Predicate predicate = 3;
+    repeated BETree betree = 4;
+}
+
+// 定向
+message Targeting {
+    uint64 id = 1;
+    BETree betree = 2;
+    bool offline = 3; // 是否下线
+    int64 update_time = 4; // 更新时间
+}
+
+// 转化为DNF的定向表达
+message TargetingDNF {
+    message Conjunction {
+        repeated Predicate predicate = 1;
+    }
+    uint64 id = 1;
+    repeated Conjunction conjunction = 2;
+}

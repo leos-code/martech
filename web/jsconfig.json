@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@": ["./src"],
+            "@dashboard": ["./src/pages/dashboard"],
+            "@portal": ["./src/pages/portal"]
+        }
+    }
+}

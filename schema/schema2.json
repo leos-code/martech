@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "fields": [
+    {
+      "name": "age",
+      "type": "integer"
+    },
+    {
+      "name": "last_active_time",
+      "type": "enum",
+      "enum": [
+        {
+          "value": "1周内"
+        },
+        {
+          "value": "1周以外，1月以内"
+        },
+        {
+          "value": "1月以外"
+        }
+      ]
+    },
+    {
+      "name": "self_active_rate",
+      "type": "integer"
+    }
+  ]
+}

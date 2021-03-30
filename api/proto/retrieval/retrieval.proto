@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package retrieval;
+
+option go_package = "github.com/tencentad/martech/api/proto/retrieval";
+option java_package = "com.tencent.ug.proto.retrieval";
+
+import "ug/api/proto/rta/rta_strategy.proto";
+
+service RetrievalService {
+    rpc Retrieve (RetrievalRequest) returns (RetrievalResponse) {}
+    rpc QueryInfo(QueryInfoRequest) returns (QueryInfoResponse) {}
+}
+
+message RetrievalRequest {
+    repeated Feature feature = 2;
+    int32 topn = 3;
+}
+
+message Feature {
+    string field = 1;
+    message Value {
+        enum Type {
+            UnKnown = 0;
+            ID = 1;
+            String = 2;
+        }
+        Type type = 1;
+        uint64 id = 2;
+        string str = 3;
+    }
+    repeated Value value = 2;
+}
+
+message RetrievalResponse {
+    int32 ret_code = 1;
+    repeated rta.RTAInfo hit_rta_info = 3;
+}
+
+message QueryInfoRequest {
+    enum Cmd {
+        UnKnown = 0;
+        GetTargetingID = 1;
+        GetTargeting = 2;
+    }
+    Cmd cmd = 1;
+    uint64 targeting_id = 2;
+}
+
+message QueryInfoResponse {
+    int32 code = 1;
+    repeated uint64 targeting_id = 2;
+    rta.RTAInfo rta_info = 3;
+}

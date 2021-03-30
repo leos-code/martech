@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "fields": [
+    {
+      "name": "age",
+      "type": "integer",
+      "range": {
+        "min": 0,
+        "max": 200
+      }
+    },
+    {
+      "name": "interest",
+      "type": "enum",
+      "enum": [
+        {
+          "value": "游戏",
+          "children": [
+            {
+              "value": "王者荣耀",
+              "children": []
+            },
+            {
+              "value": "和平精英"
+            },
+            {
+              "value": "阴阳师"
+            }
+          ]
+        },
+        {
+          "value": "音乐"
+        }
+      ]
+    },
+    {
+      "name": "download_song",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package novelty;
+
+option go_package = "github.com/tencentad/martech/api/proto/novelty";
+option java_package = "com.tencent.ug.proto.novelty";
+
+message Novelty {
+    Click click = 1;
+}
+
+message Click {
+    uint64 day_click_count = 1; // 当天点击次数
+    int64 last_click_day = 2; // 上次点击发生的天，timestamp % 86400
+    uint64 accumulate_click_count = 3; // 累计点击次数
+    int64 last_click_timestamp = 4; // 上次点击时间
+}

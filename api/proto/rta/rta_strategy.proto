@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package rta;
+
+option go_package = "github.com/tencentad/martech/api/proto/rta";
+option java_package = "com.tencent.ug.proto.rta";
+
+import "ug/api/proto/targeting/targeting_be.proto";
+import "ug/api/proto/targeting/targeting_index.proto";
+
+// RTA相关信息
+message RTAInfo {
+    uint64 id = 1; // ID
+    string name = 2; // 定向名称
+    targeting.BETree betree = 3; // 策略定向树
+    int64 update_time = 4; // 更新时间
+    repeated BindStrategy bind_strategy = 5; // 绑定生效的策略
+}
+
+// RTA策略实际绑定的策略
+message BindStrategy {
+    uint64 id = 1; // ID
+    string name = 2; // 策略名
+    string platform = 3; // 生效的平台
+    string strategy = 4; // RTA策略相关信息, 调用types.Strategy.Value()生成
+
+    // TODO定义结构体
+}
+
+// 全量的RTA定向信息
+message FullRTAInfo {
+    repeated RTAInfo rta_info = 1;
+    int64 dump_time = 2;
+    int64 version = 3;
+}
+
+// 索引信息，包括倒排和正排信息
+message RTAIndex {
+    targeting.TargetingIndex index = 1;
+    repeated RTAInfo rta_targeting = 2;
+    int64 dump_time = 3;
+    int64 version = 4;
+}

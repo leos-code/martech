@@ -1,0 +1,22 @@
+{
+  "db": {
+    "dsn": "sqlite.db",
+    "type": "sqlite"
+  },
+  "log": {
+  },
+  "web": {
+    "server_address": ":80",
+    "web_file_root": "dist",
+    "docs_file_root": "docs",
+    "casbin": {
+      "model_conf_path": "casbin_model.conf"
+    },
+    "login": {
+    }
+  },
+  "api": {
+    "rta_exp_list_url": "http://9.138.128.17:80/api/v1/exp/list",
+    "rta_exp_data_url": "http://9.138.128.17:80/api/v1/exp/data"
+  }
+}

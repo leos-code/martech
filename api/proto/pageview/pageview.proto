@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package pageview;
+
+option go_package = "github.com/tencentad/martech/api/proto/pageview";
+option java_package = "com.tencent.ug.proto.pageview";
+
+import "ug/api/proto/rta/rta_strategy.proto";
+
+message Pageview {
+    string trace_id = 1; // 每次请求随机生成trace_id
+    int64 process_time = 2; // 请求时间，时间戳，单位秒
+    string from_platform = 3; // 来自那个平台的请求
+    Device device = 4; // 用户设备信息
+    repeated rta.RTAInfo hit_rta_info = 5; // 命中的策略
+    uint32 inner_cost_ms = 6; // 内部耗时, 单位毫秒，RTA server对延时敏感
+    repeated Imp imp = 7; // 对应的曝光，目前可能没有曝光，只是保留层级关系
+}
+
+message Device {
+    string imei = 1;
+    string idfa = 2;
+    string oaid = 3;
+}
+
+message Imp {
+    repeated Click click = 1;  // 曝光对应的点击
+}
+
+message Click {
+    int64 click_time = 1; // 点击时间
+    repeated Conversion conversion = 2; // 点击归因上的转化
+}
+
+message Conversion {
+    int64 action_time = 1; // 转化发生时间，时间戳，秒
+    string action_type = 2; // 转化类型
+}

@@ -1,0 +1,29 @@
+@import './basics.scss';
+
+.el-table__row {
+    .el-button {
+        margin-left: 10px;
+    }
+    .el-popover__reference-wrapper {
+        margin-left: 0;
+    }
+}
+
+.success {
+    color: #67c23a;
+}
+.warning {
+    color: #e6a23c;
+}
+.danger {
+    color: #f56c6c;
+}
+.avatar {
+    border-radius: 50%;
+}
+
+//默认的表格分页组件配置
+.pagination{
+    float: right;
+    overflow: auto;
+}

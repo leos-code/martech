@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package targeting;
+
+option go_package = "github.com/tencentad/martech/api/proto/targeting";
+option java_package = "com.tencent.ug.proto.targeting";
+
+import "ug/api/proto/targeting/targeting_be.proto";
+
+message Interval {
+    uint64 begin = 1;
+    uint64 end = 2;
+}
+
+message IntervalCoverIndex {
+    message PointInfo {
+        uint64 point = 1;
+        repeated uint32 ids = 2;
+    }
+    repeated PointInfo points = 1;
+}
+
+message IdIndex {
+    uint64 targeting_id = 1; // 定向的ID标识
+    uint32 local_id = 2;  // 索引使用的ID
+}
+
+message TokenIndex {
+    message ConjunctionHit {
+        uint32 conjunction_id = 1;
+        uint32 predicate_id = 2;
+    }
+    message TargetingHit {
+        uint32 local_id = 1;
+        bool is_id = 2;
+    }
+    repeated ConjunctionHit conjunction_hit = 1;
+    repeated TargetingHit targeting_hit = 2;
+}
+
+message ConjunctionIndex {
+    uint32 hit_count = 1;
+    repeated uint32 local_ids = 2;
+}
+
+message TargetingInfo {
+    int64 targeting_id = 1;
+    bytes targeting_be = 2;
+    bool offline = 3;
+    uint64 update_time = 4;
+}
+
+message SearchTokenIndex {
+    IntervalCoverIndex cover_index = 1;
+    map<string, uint32> string_index = 2;
+}
+
+message TargetingIndex {
+    map<string, SearchTokenIndex> search_token_index = 1;
+    repeated TokenIndex token_index = 2;
+    repeated ConjunctionIndex conjunction_index = 3;
+    repeated IdIndex id_index = 4;
+    repeated Targeting targeting = 5;
+}
