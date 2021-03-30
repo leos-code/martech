@@ -7,7 +7,7 @@ const resolve = function(dir) {
 };
 module.exports = {
     base: process.env.VUEPRESS_BASE || '/docs/',
-    title: 'User Growth',
+    title: 'Martech',
     head: [['link', { ref: 'icon', href: '/logo.png' }]],
     plugins: ['vuepress-plugin-mermaidjs'],
     dest: resolve('../../dist'),
@@ -16,24 +16,52 @@ module.exports = {
         lastUpdated: '最后更新于',
         nav: [
             {
-                text: 'Git',
+                text: 'Github',
                 link: 'https://github.com/tencentad/martech',
             },
         ],
         sidebar: [
             {
-                title: '测试目录 - 1',
-                path: '/',
-                collapsable: false,
+                title: 'RTA服务',
+                path: '/RTA/',
+                collapsable: true,
                 sidebarDepth: 1,
-                children: ['/common_problems'],
             },
             {
-                title: '测试目录 - 2',
-                path: '/',
-                collapsable: false,
+                title: '权限管理',
+                path: '/Authority/',
+                collapsable: true,
                 sidebarDepth: 1,
-                children: ['/folder-b/'],
+            },
+            {
+                title: '跨平台账号',
+                path: '/Advertiser/',
+                collapsable: true,
+                sidebarDepth: 1,
+            },
+            {
+                title: '资产管理',
+                path: '/Property/',
+                collapsable: true,
+                sidebarDepth: 1,
+            },
+            {
+                title: '数据报表',
+                path: '/AdReport/',
+                collapsable: true,
+                sidebarDepth: 1,
+            },
+            {
+                title: '联邦学习',
+                path: '/FederatedLearning/',
+                collapsable: true,
+                sidebarDepth: 1,
+            },
+            {
+                title: '归因服务',
+                path: '/Attribution/',
+                collapsable: true,
+                sidebarDepth: 1,
             },
         ],
     },

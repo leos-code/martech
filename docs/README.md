@@ -46,3 +46,10 @@ cd ./cmd/web
 go run web.go
 open http://localhost:8086/docs
 ```
+
+## go get -v package from git.code.oa.com
+```shell
+export GOPROXY="https://goproxy.cn,direct"
+export GOPRIVATE="git.code.oa.com"
+go get -v git.code.oa.com/tme-server-component/kg_growth_open
+```
